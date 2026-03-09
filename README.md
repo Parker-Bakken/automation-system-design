@@ -34,6 +34,115 @@ The goal is to document **reusable patterns and architecture decisions** for bui
 
 ---
 
+## System Design Philosophy
+
+This repository focuses on **automation as a system**, not just individual workflows.
+
+Many automation projects fail because they are built as single scripts or visual flows without considering reliability, observability, and long-term maintainability.
+
+The design patterns documented here follow a few core principles.
+
+### 1. Automations should be deterministic
+
+A workflow should behave predictably when given the same input.
+
+This means designing with:
+
+* idempotent actions
+* clear state transitions
+* duplicate protection
+* explicit validation steps
+
+---
+
+### 2. Workflows should assume failure
+
+External APIs fail.
+Data formats change.
+Users submit invalid inputs.
+
+Production automation systems must include:
+
+* retry strategies
+* fallback paths
+* dead-letter handling
+* manual replay options
+* structured error logging
+
+---
+
+### 3. Systems should expose observable behavior
+
+A reliable automation system should make it easy to answer questions like:
+
+* What ran?
+* What failed?
+* Where did it fail?
+* How often does it fail?
+* What is the average processing time?
+
+This requires:
+
+* structured logs
+* measurable workflow states
+* monitoring and alerts
+* traceable execution runs
+
+---
+
+### 4. Separate orchestration from logic
+
+A maintainable automation system separates:
+
+**Orchestration**
+
+* workflow coordination
+* step ordering
+* branching logic
+* retries and recovery
+
+**Business Logic**
+
+* data transformations
+* AI prompts
+* enrichment logic
+* scoring or classification
+
+This separation keeps workflows modular and easier to maintain.
+
+---
+
+### 5. Human review should exist for high-risk actions
+
+Automation should assist humans, not replace oversight for sensitive actions.
+
+Human review steps are recommended for:
+
+* publishing public content
+* financial transactions
+* customer communications
+* destructive operations
+* compliance-sensitive actions
+
+---
+
+### 6. Design for evolution
+
+Automation systems rarely stay static.
+
+Systems should be designed so they can:
+
+* add new integrations
+* extend workflows
+* modify logic safely
+* replace providers without major redesign
+
+Architecture patterns in this repo prioritize **extensibility and modularity**.
+
+---
+
+These principles guide the examples, templates, and architecture patterns documented throughout this repository.
+
 ## 🚧 Project Status
 
 This repo is **actively evolving** as new patterns and real-world automation systems are designed and tested.
@@ -173,3 +282,5 @@ MIT License
 
 ⭐ If you're interested in automation architecture, system design, or workflow engineering, feel free to follow the project as it develops.
 
+Maintained by: Parker Bakken
+Automation systems, AI workflows, and orchestration design.
