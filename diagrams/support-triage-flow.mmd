@@ -1,0 +1,9 @@
+flowchart TD
+    A[Inbound Support Request] --> B[Parse Message]
+    B --> C[Lookup Customer Context]
+    C --> D[Classify Issue]
+    D --> E[Score Urgency]
+    E --> F[Route to Team Queue]
+    F --> G[Generate Agent Summary]
+    G --> H[Update Ticket]
+    H --> I[Log Outcome]
