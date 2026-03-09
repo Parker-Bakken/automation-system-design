@@ -1,0 +1,14 @@
+flowchart TD
+    A[Invoice Upload / Email] --> B[OCR or Parse File]
+    B --> C[Extract Fields]
+    C --> D[Validate Business Rules]
+    D --> E{Valid?}
+    E -- No --> F[Route to Exception Queue]
+    E -- Yes --> G[Check Duplicates]
+    G --> H{Duplicate?}
+    H -- Yes --> I[Flag + Stop]
+    H -- No --> J[Approval Workflow]
+    J --> K{Approved?}
+    K -- No --> L[Reject + Log]
+    K -- Yes --> M[Sync to Accounting System]
+    M --> N[Write Audit Log]
