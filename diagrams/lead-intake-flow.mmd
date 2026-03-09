@@ -1,0 +1,14 @@
+flowchart TD
+    A[Lead Form / Webhook] --> B[Validate Payload]
+    B --> C{Valid?}
+    C -- No --> D[Reject + Log Error]
+    C -- Yes --> E[Deduplicate Lead]
+    E --> F{Duplicate?}
+    F -- Yes --> G[Mark Duplicate + Archive]
+    F -- No --> H[Enrich Lead Data]
+    H --> I[Score Lead]
+    I --> J{Qualified?}
+    J -- No --> K[Store as Nurture Lead]
+    J -- Yes --> L[Send to CRM]
+    L --> M[Notify Sales Team]
+    M --> N[Log Success]
