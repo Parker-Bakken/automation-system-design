@@ -1,0 +1,13 @@
+flowchart TD
+    A[Idea Queue] --> B[Validate Input]
+    B --> C[Pull Context]
+    C --> D[Generate Draft with AI]
+    D --> E[Validate Output Schema]
+    E --> F{Passes QA?}
+    F -- No --> G[Send to Revision Queue]
+    F -- Yes --> H[Approval Step]
+    H --> I{Approved?}
+    I -- No --> J[Archive / Revise]
+    I -- Yes --> K[Render or Publish]
+    K --> L[Store Asset Metadata]
+    L --> M[Log Completion]
